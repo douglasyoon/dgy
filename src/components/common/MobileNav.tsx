@@ -1,4 +1,4 @@
-import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { font } from '../../styles/fonts';
 
@@ -12,16 +12,16 @@ const MobileNav = ({ isOpenMobileNav }: MobileNavProps) => {
       <nav className={`mobile-nav ${isOpenMobileNav && 'mobile-nav-open'}`}>
         <ul className='mobile-nav-list'>
           <li className='mobile-nav-list-item'>
-            <span>Home</span>
+            <NavLink to='/'>Home</NavLink>
           </li>
           <li className='mobile-nav-list-item'>
-            <span>Projects</span>
+            <NavLink to='/projects'>Projects</NavLink>
           </li>
           <li className='mobile-nav-list-item'>
-            <span>About me</span>
+            <NavLink to='/aboutme'>About me</NavLink>
           </li>
           <li className='mobile-nav-list-item'>
-            <span>Contact</span>
+            <NavLink to='/contact'>Contact</NavLink>
           </li>
         </ul>
       </nav>
@@ -48,7 +48,7 @@ const Box = styled.div`
       gap: 8px;
       & .mobile-nav-list-item {
         padding: 0px 20px;
-        span {
+        a {
           display: block;
           width: 100%;
           font: ${font.style20Light};
@@ -68,10 +68,10 @@ const Box = styled.div`
             width: 0%;
             height: 1px;
             background: ${({ theme }) => theme.colors.text};
-            transition: width 0.3s ease-in-out;
+            transition: width 0.5s ease-in-out;
           }
         }
-        &:hover span {
+        &:hover a {
           ::after {
             width: 100%;
           }

@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { font } from '../../styles/fonts';
 import media from '../../styles/media';
-import DarkModeButton from './DarkModeButton';
+import { font } from '../../styles/fonts';
 import MobileButton from './MobileButton';
 import MobileNav from './MobileNav';
+import DarkModeButton from './DarkModeButton';
 
 const Header = () => {
   const [isOpenMobileNav, setIsMobileNav] = useState<boolean>(false);
@@ -14,16 +15,16 @@ const Header = () => {
       <nav className='nav'>
         <ul className='nav-list'>
           <li className='nav-list-item'>
-            <span>Home</span>
+            <NavLink to='/'>Home</NavLink>
           </li>
           <li className='nav-list-item'>
-            <span>Projects</span>
+            <NavLink to='/projects'>Projects</NavLink>
           </li>
           <li className='nav-list-item'>
-            <span>About me</span>
+            <NavLink to='/aboutme'>About me</NavLink>
           </li>
           <li className='nav-list-item'>
-            <span>Contact</span>
+            <NavLink to='/contact'>Contact</NavLink>
           </li>
         </ul>
         <DarkModeButton />
@@ -71,7 +72,7 @@ const Box = styled.header`
         display: flex;
         align-items: center;
         cursor: pointer;
-        & span {
+        & a {
           font: ${font.style20Light};
           &::after {
             content: '';
@@ -79,9 +80,10 @@ const Box = styled.header`
             width: 0%;
             height: 1px;
             background: ${({ theme }) => theme.colors.text};
-            transition: width 0.3s ease-in-out;
+            transition: all 0.5s ease-in-out;
           }
-          &:hover {
+          &:hover,
+          &.active {
             &::after {
               width: 100%;
             }
@@ -90,7 +92,6 @@ const Box = styled.header`
       }
     }
   }
-
   ${media.medium} {
     & .nav {
       display: none !important;

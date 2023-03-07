@@ -12,12 +12,9 @@ img, video {height:auto;max-width:100%}
 iframe {border:0}
 table {border-collapse:collapse;border-spacing:0}
 td, th {padding:0}
+a{text-decoration:none}
 
 /* Custom Styles */
-body{
-  background: ${({ theme }) => theme.colors.background};
-  transition: background 0.5s ease-in-out;
-}
 h1,h2,h3,h4,h5,h6,p,span,a{
   color: ${({ theme }) => theme.colors.text};
   transition: color 0.5s ease-in-out;
