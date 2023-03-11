@@ -9,7 +9,11 @@ const Home = () => {
   return (
     <Layout>
       <Section>
-        <ContentsBox>
+        <ContentsBox
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           <Block>
             <p>
               안녕하세요. <br />
@@ -26,9 +30,14 @@ const Block = styled.div`
   & p {
     font: ${font.style40Light};
   }
-  ${media.small} {
+  ${media.m} {
     & p {
-      font: ${font.style20Regular};
+      font: ${font.style32Light};
+    }
+  }
+  ${media.sm} {
+    & p {
+      font: ${font.style20Light};
     }
   }
 `;

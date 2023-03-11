@@ -3,13 +3,17 @@ import ContentsBox from '../components/common/ContentsBox';
 import Layout from '../components/common/Layout';
 import Section from '../components/common/Section';
 import { font } from '../styles/fonts';
-import { colors } from '../styles/palette';
+import { colors, shadow } from '../styles/palette';
 
 const AboutMe = () => {
   return (
     <Layout>
       <Section>
-        <ContentsBox>
+        <ContentsBox
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           <ProfileList>
             <ProfileListItem>
               <p className='profile-title'>Profile</p>
@@ -37,8 +41,8 @@ const ProfileList = styled.ul`
   width: 100%;
   height: auto;
   border-radius: 16px;
-  background: ${({ theme }) => theme.colors.background};
-  box-shadow: 2px 12px 16px 0px rgba(0, 0, 0, 0.1);
+  background: ${({ theme }) => theme.colors.card};
+  box-shadow: ${shadow};
   transition: background 0.5s ease-in-out;
 `;
 const ProfileListItem = styled.li`

@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const ContentsBox = styled.div`
+const ContentsBox = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -14,7 +14,7 @@ const MobileButton = ({
   return (
     <Box>
       <div
-        className={`hamburger-menu ${isOpenMobileNav && 'hamburger-close'}`}
+        className={`hamburger-menu ${isOpenMobileNav ? 'hamburger-close' : ''}`}
         onClick={() => setIsMobileNav(!isOpenMobileNav)}
       >
         <span></span>
@@ -26,7 +26,7 @@ const MobileButton = ({
 };
 
 const Box = styled.div`
-  display: none;
+  display: flex;
   & .hamburger-menu {
     display: flex;
     flex-direction: column;
@@ -54,9 +54,6 @@ const Box = styled.div`
       opacity: 0;
       visibility: hidden;
     }
-  }
-  ${media.medium} {
-    display: block;
   }
 `;
 

@@ -12,9 +12,6 @@ const MobileNav = ({ isOpenMobileNav }: MobileNavProps) => {
       <nav className={`mobile-nav ${isOpenMobileNav && 'mobile-nav-open'}`}>
         <ul className='mobile-nav-list'>
           <li className='mobile-nav-list-item'>
-            <NavLink to='/'>Home</NavLink>
-          </li>
-          <li className='mobile-nav-list-item'>
             <NavLink to='/projects'>Projects</NavLink>
           </li>
           <li className='mobile-nav-list-item'>

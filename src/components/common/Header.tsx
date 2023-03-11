@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import media from '../../styles/media';
@@ -9,14 +9,19 @@ import DarkModeButton from './DarkModeButton';
 
 const Header = () => {
   const [isOpenMobileNav, setIsMobileNav] = useState<boolean>(false);
+  useEffect(() => {
+    window.addEventListener('resize', () => setIsMobileNav(false));
+    return () => {
+      window.removeEventListener('resize', () => {});
+    };
+  }, []);
   return (
     <Box>
-      <h1>DGY</h1>
+      <h1>
+        <NavLink to='/'>DGY</NavLink>
+      </h1>
       <nav className='nav'>
         <ul className='nav-list'>
-          <li className='nav-list-item'>
-            <NavLink to='/'>Home</NavLink>
-          </li>
           <li className='nav-list-item'>
             <NavLink to='/projects'>Projects</NavLink>
           </li>
@@ -29,10 +34,17 @@ const Header = () => {
         </ul>
         <DarkModeButton />
       </nav>
-      <MobileButton
-        isOpenMobileNav={isOpenMobileNav}
-        setIsMobileNav={setIsMobileNav}
-      />
+      <ul className='mobile-header'>
+        <li>
+          <DarkModeButton />
+        </li>
+        <li>
+          <MobileButton
+            isOpenMobileNav={isOpenMobileNav}
+            setIsMobileNav={setIsMobileNav}
+          />
+        </li>
+      </ul>
       <MobileNav isOpenMobileNav={isOpenMobileNav} />
     </Box>
   );
@@ -49,11 +61,7 @@ const Box = styled.header`
   height: 52px;
   padding: 0 20px;
   z-index: 1;
-  background: ${({ theme }) =>
-    theme.name === 'LIGHT'
-      ? `rgba(253, 254, 255, 0.5)`
-      : `rgba(18, 18, 18, 0.5)`};
-  backdrop-filter: blur(12px);
+  background: ${({ theme }) => theme.colors.background};
   transition: background 0.5s ease-in-out;
   & h1 {
     cursor: pointer;
@@ -92,9 +100,17 @@ const Box = styled.header`
       }
     }
   }
-  ${media.medium} {
+  & .mobile-header {
+    display: none;
+    gap: 32px;
+    align-items: center;
+  }
+  ${media.m} {
     & .nav {
       display: none !important;
+    }
+    & .mobile-header {
+      display: flex;
     }
   }
 `;

@@ -10,7 +10,11 @@ const Contact = () => {
   return (
     <Layout>
       <Section>
-        <ContentsBox>
+        <ContentsBox
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           <ContactList>
             <ContactItem>
               <Link to={'https://github.com/douglasyoon'} target='_blank'>
