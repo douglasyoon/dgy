@@ -1,59 +1,74 @@
 import styled from 'styled-components';
 import Layout from '../components/common/Layout';
-import { font } from '../styles/fonts';
 import { shadow } from '../styles/palette';
 
 const AboutMe = () => {
   return (
     <Layout title='About me'>
-      <ProfileList>
-        <ProfileListItem>
-          <p className='profile-title'>Skills</p>
-          <div className='profile-contents'>
-            blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+      <SkillsList>
+        <SkillsItem>
+          <div className='skill-thumbnail'>
+            <img src='/images/icons/icon_react.svg' alt='' />
           </div>
-        </ProfileListItem>
-      </ProfileList>
+        </SkillsItem>
+        <SkillsItem>
+          <div className='skill-thumbnail'>
+            <img src='/images/icons/icon_redux.svg' alt='' />
+          </div>
+        </SkillsItem>
+        <SkillsItem>
+          <div className='skill-thumbnail'>
+            <img src='/images/icons/icon_js.svg' alt='' />
+          </div>
+        </SkillsItem>
+        <SkillsItem>
+          <div className='skill-thumbnail'>
+            <img src='/images/icons/icon_html.svg' alt='' />
+          </div>
+        </SkillsItem>
+        <SkillsItem>
+          <div className='skill-thumbnail'>
+            <img src='/images/icons/icon_css.svg' alt='' />
+          </div>
+        </SkillsItem>
+        <SkillsItem>
+          <div className='skill-thumbnail'>
+            <img src='/images/icons/icon_sass.svg' alt='' />
+          </div>
+        </SkillsItem>
+      </SkillsList>
     </Layout>
   );
 };
 
-const ProfileList = styled.ul`
+const SkillsList = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  max-width: 640px;
+  height: 100%;
+  max-height: 420px;
+`;
+const SkillsItem = styled.li`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: auto;
+  padding: 40px;
   border-radius: 16px;
   background: ${({ theme }) => theme.colors.card};
   box-shadow: ${shadow};
   transition: background 0.5s ease-in-out;
-`;
-const ProfileListItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 72px;
-  overflow: hidden;
-  transition: height 0.5s ease-in-out;
-  & .profile-title {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    font: ${font.style20Regular};
-    cursor: pointer;
-  }
-  & .profile-contents {
-    width: 100%;
-    padding: 20px;
-    font: ${font.style20Regular};
-    color: ${({ theme }) => theme.colors.text};
-    word-break: break-all;
-  }
-  &:hover {
-    height: 300px;
+  & .skill-thumbnail {
+    width: 72px;
+    height: 72px;
+    & img {
+      width: 100%;
+      height: auto;
+    }
   }
 `;
 

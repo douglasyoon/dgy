@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { font } from '../../styles/fonts';
 import media from '../../styles/media';
@@ -16,13 +17,9 @@ const ProjectListItem = ({
   onClickEvent,
   isActive,
 }: ProjectListItemProps) => {
-  // const [isActive, setIsActive] = useState<boolean>(false);
   return (
-    <Box
-      className={isActive(project.id) ? 'active' : ''}
-      onClick={() => onClickEvent(project.id)}
-    >
-      <div className='project-tab'>
+    <Box className={isActive(project.id) ? 'active' : ''}>
+      <div className='project-tab' onClick={() => onClickEvent(project.id)}>
         <div className='project-info'>
           <div className='project-thumbnail'>
             <img src={project.img} alt={project.title} />
@@ -40,8 +37,14 @@ const ProjectListItem = ({
           <p className='desc-title'>구현한 기능</p>
           <p>{project.whatido}</p>
         </div>
-        <ul className='project-link'>
-          <li></li>
+        <ul className='project-links'>
+          <li className='project-link-item'>
+            <Link
+              to={project.github}
+              className='icon github'
+              target='_blank'
+            ></Link>
+          </li>
         </ul>
       </div>
     </Box>
@@ -87,11 +90,7 @@ const Box = styled.li`
       display: block;
       width: 20px;
       height: 20px;
-      background: ${({ theme }) =>
-          theme.name === 'LIGHT'
-            ? `url('/images/icons/icon_arrow_black.svg')`
-            : `url('/images/icons/icon_arrow_white.svg')`}
-        no-repeat center;
+      background: url('/images/icons/icon_arrow_gray.svg') no-repeat center;
       background-size: 20px 20px;
       transform: rotate(0deg);
       transition: all 0.5s ease-in-out;
@@ -99,14 +98,15 @@ const Box = styled.li`
   }
   & .project-contents {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
     cursor: default;
     & .project-desc {
-      flex-grow: 1;
       width: 100%;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 1.2s ease-in-out;
       & .desc-title {
         margin-top: 8px;
         font: ${font.style20Regular};
@@ -117,13 +117,32 @@ const Box = styled.li`
         line-height: 1.6;
       }
     }
-    & .project-link {
-      flex-shrink: 1;
-      padding: 20px;
+    & .project-links {
+      display: flex;
+      width: 100%;
+      justify-content: end;
+      & .project-link-item {
+        width: 32px;
+        height: 32px;
+        & .icon {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        & .github {
+          background: ${({ theme }) =>
+              theme.name === 'LIGHT'
+                ? `url('/images/icons/icon_github_black.svg')`
+                : `url('/images/icons/icon_github_white.svg')`}
+            no-repeat center;
+          background-size: 100% 100%;
+          transition: background 0.5s ease-in-out;
+        }
+      }
     }
   }
   &.active {
-    height: 340px;
+    height: 380px;
     filter: grayscale(0);
     & .project-tab {
       & .project-info {
@@ -132,13 +151,17 @@ const Box = styled.li`
         }
       }
       & .fold-icon {
+        background: ${({ theme }) =>
+            theme.name === 'LIGHT'
+              ? `url('/images/icons/icon_arrow_black.svg')`
+              : `url('/images/icons/icon_arrow_white.svg')`}
+          no-repeat center;
+        background-size: 20px 20px;
         transform: rotate(-180deg);
       }
     }
     & .project-contents {
-      & .project-desc {
-        opacity: 1;
-      }
+      opacity: 1;
     }
   }
   ${media.m} {
@@ -160,8 +183,8 @@ const Box = styled.li`
       }
     }
     & .project-contents {
+      opacity: 1;
       & .project-desc {
-        opacity: 1;
         & .desc-title {
           font: ${font.style20Regular};
         }
@@ -169,7 +192,8 @@ const Box = styled.li`
           font: ${font.style16Light};
         }
       }
-      & .project-link {
+      & .project-links {
+        margin-top: 20px;
       }
     }
     &.active {
