@@ -1,0 +1,24 @@
+[
+  {
+    "id": "project2",
+    "title": "문화비",
+    "img": "/images/img_culturebudget.webp",
+    "date": "2023.02.06 ~ 2023.03.02",
+    "desc": "프론트엔드 2명, 백엔드 4명 구성의 팀으로 진행한 문화 생활 비용을 기록하는 가계부 프로젝트입니다.",
+    "skills": "React.js, JavaScript, TypeScript, Redux Toolkit, Axios, styled-components",
+    "whatido": "기본 UI, 회원가입, 로그인, 기록 목록, 달력형 목록, 기록 작성, 기록 상세 보기",
+    "github": "https://github.com/HumanJSEngine/project_culturebudget",
+    "youtube": "https://youtu.be/If4hrmFJT6o"
+  },
+  {
+    "id": "project1",
+    "title": "버거왕",
+    "img": "/images/img_burgerwang.webp",
+    "date": "2023.01.11 ~ 2023.02.05",
+    "desc": "프론트엔드 3명, 백엔드 4명 구성의 팀으로 진행한 버거킹 딜리버리 구현 배달 서비스 프로젝트입니다.",
+    "skills": "React.js, JavaScript, Redux Toolkit, Axios, Tailwind CSS",
+    "whatido": "메뉴, 장바구니, 주문하기, 주문 내역, 주소 관리",
+    "github": "https://github.com/goldjade/burgerwang",
+    "youtube": "https://youtu.be/Lhi_UAp9xWI"
+  }
+]

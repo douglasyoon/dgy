@@ -1,29 +1,19 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import ContentsBox from '../components/common/ContentsBox';
 import Layout from '../components/common/Layout';
-import Section from '../components/common/Section';
 import { font } from '../styles/fonts';
 import { colors } from '../styles/palette';
 
 const Contact = () => {
   return (
-    <Layout>
-      <Section>
-        <ContentsBox
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <ContactList>
-            <ContactItem>
-              <Link to={'https://github.com/douglasyoon'} target='_blank'>
-                Come to my GitHub
-              </Link>
-            </ContactItem>
-          </ContactList>
-        </ContentsBox>
-      </Section>
+    <Layout title='Contact'>
+      <ContactList>
+        <ContactItem>
+          <Link to={'https://github.com/douglasyoon'} target='_blank'>
+            GitHub
+          </Link>
+        </ContactItem>
+      </ContactList>
     </Layout>
   );
 };

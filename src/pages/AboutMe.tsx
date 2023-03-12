@@ -1,35 +1,19 @@
 import styled from 'styled-components';
-import ContentsBox from '../components/common/ContentsBox';
 import Layout from '../components/common/Layout';
-import Section from '../components/common/Section';
 import { font } from '../styles/fonts';
-import { colors, shadow } from '../styles/palette';
+import { shadow } from '../styles/palette';
 
 const AboutMe = () => {
   return (
-    <Layout>
-      <Section>
-        <ContentsBox
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <ProfileList>
-            <ProfileListItem>
-              <p className='profile-title'>Profile</p>
-              <div className='profile-contents'>
-                profileblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
-              </div>
-            </ProfileListItem>
-            <ProfileListItem>
-              <p className='profile-title'>Skills</p>
-              <div className='profile-contents'>
-                blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
-              </div>
-            </ProfileListItem>
-          </ProfileList>
-        </ContentsBox>
-      </Section>
+    <Layout title='About me'>
+      <ProfileList>
+        <ProfileListItem>
+          <p className='profile-title'>Skills</p>
+          <div className='profile-contents'>
+            blahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblahblah
+          </div>
+        </ProfileListItem>
+      </ProfileList>
     </Layout>
   );
 };

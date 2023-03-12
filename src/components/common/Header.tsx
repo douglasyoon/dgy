@@ -1,10 +1,9 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import media from '../../styles/media';
 import { font } from '../../styles/fonts';
 import MobileButton from './MobileButton';
-import MobileNav from './MobileNav';
 import DarkModeButton from './DarkModeButton';
 
 interface HeaderProps {
@@ -13,13 +12,6 @@ interface HeaderProps {
 }
 
 const Header = ({ isOpenMobileNav, setIsMobileNav }: HeaderProps) => {
-  // const [isOpenMobileNav, setIsMobileNav] = useState<boolean>(false);
-  // useEffect(() => {
-  //   window.addEventListener('resize', () => setIsMobileNav(false));
-  //   return () => {
-  //     window.removeEventListener('resize', () => {});
-  //   };
-  // }, []);
   return (
     <Box>
       <h1>
@@ -50,7 +42,6 @@ const Header = ({ isOpenMobileNav, setIsMobileNav }: HeaderProps) => {
           />
         </li>
       </ul>
-      {/* <MobileNav isOpenMobileNav={isOpenMobileNav} /> */}
     </Box>
   );
 };
@@ -66,7 +57,6 @@ const Box = styled.header`
   height: 52px;
   padding: 0 20px;
   z-index: 1;
-  /* background: ${({ theme }) => theme.colors.background}; */
   background: ${({ theme }) =>
     theme.name === 'LIGHT'
       ? `rgba(253, 254, 255, 0.5)`

@@ -3,11 +3,14 @@ import { RecoilRoot } from 'recoil';
 import AppRoutes from './Routes';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <RecoilRoot>
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </HelmetProvider>
   </RecoilRoot>
 );

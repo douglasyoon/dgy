@@ -13,4 +13,4 @@ export const colors = {
   gray9: '#212121',
 };
 
-export const shadow = '2px 12px 16px 0px rgba(0, 0, 0, 0.1)';
+export const shadow = '2px 4px 16px 0px rgba(0, 0, 0, 0.1)';

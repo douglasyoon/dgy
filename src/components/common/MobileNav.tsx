@@ -36,7 +36,6 @@ const NavBox = styled.nav<{ isOpen: boolean }>`
       ? `rgba(253, 254, 255, 0.5)`
       : `rgba(18, 18, 18, 0.5)`};
   backdrop-filter: blur(12px);
-  /* background: ${({ theme }) => theme.colors.background}; */
   transition: all 0.5s ease-in-out;
   z-index: 1;
   & .mobile-nav-list {

@@ -25,7 +25,7 @@ h1,h2,h3,h4,h5,h6,p,span,a{
 }
 
 ::-webkit-scrollbar{
-  width: 12px;
+  width: 4px;
   background: ${({ theme }) => theme.colors.background};
 }
 ::-webkit-scrollbar-thumb{
