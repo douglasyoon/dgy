@@ -8,76 +8,72 @@ interface MobileNavProps {
 
 const MobileNav = ({ isOpenMobileNav }: MobileNavProps) => {
   return (
-    <Box>
-      <nav className={`mobile-nav ${isOpenMobileNav && 'mobile-nav-open'}`}>
-        <ul className='mobile-nav-list'>
-          <li className='mobile-nav-list-item'>
-            <NavLink to='/projects'>Projects</NavLink>
-          </li>
-          <li className='mobile-nav-list-item'>
-            <NavLink to='/aboutme'>About me</NavLink>
-          </li>
-          <li className='mobile-nav-list-item'>
-            <NavLink to='/contact'>Contact</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </Box>
+    <NavBox isOpen={isOpenMobileNav}>
+      <ul className='mobile-nav-list'>
+        <li className='mobile-nav-list-item'>
+          <NavLink to='/projects'>Projects</NavLink>
+        </li>
+        <li className='mobile-nav-list-item'>
+          <NavLink to='/aboutme'>About me</NavLink>
+        </li>
+        <li className='mobile-nav-list-item'>
+          <NavLink to='/contact'>Contact</NavLink>
+        </li>
+      </ul>
+    </NavBox>
   );
 };
 
-const Box = styled.div`
-  position: absolute;
-  left: 0;
+const NavBox = styled.nav<{ isOpen: boolean }>`
+  position: fixed;
+  left: ${({ isOpen }) => (isOpen ? 0 : '100%')};
   top: 52px;
   width: 100%;
-  & .mobile-nav {
-    position: absolute;
-    left: 100%;
-    width: 100%;
-    height: calc(100vh - 52px);
-    padding: 20px 0px;
-    background: ${({ theme }) => theme.colors.background};
-    transition: all 0.5s ease-in-out;
-    & .mobile-nav-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      & .mobile-nav-list-item {
-        padding: 0px 20px;
-        a {
-          display: block;
-          width: 100%;
-          font: ${font.style20Light};
-          &.active {
-            ::after {
-              content: '';
-              display: block;
-              width: 100%;
-              height: 1px;
-              background: ${({ theme }) => theme.colors.text};
-              transition: background 0.5s ease-in-out;
-            }
-          }
+  height: calc(100vh - 52px);
+  padding: 20px 0px;
+  background: ${({ theme }) =>
+    theme.name === 'LIGHT'
+      ? `rgba(253, 254, 255, 0.5)`
+      : `rgba(18, 18, 18, 0.5)`};
+  backdrop-filter: blur(12px);
+  /* background: ${({ theme }) => theme.colors.background}; */
+  transition: all 0.5s ease-in-out;
+  z-index: 1;
+  & .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    & .mobile-nav-list-item {
+      padding: 0px 20px;
+      a {
+        display: block;
+        width: 100%;
+        font: ${font.style20Light};
+        &.active {
           ::after {
             content: '';
             display: block;
-            width: 0%;
+            width: 100%;
             height: 1px;
             background: ${({ theme }) => theme.colors.text};
-            transition: width 0.5s ease-in-out;
+            transition: background 0.5s ease-in-out;
           }
         }
-        &:hover a {
-          ::after {
-            width: 100%;
-          }
+        ::after {
+          content: '';
+          display: block;
+          width: 0%;
+          height: 1px;
+          background: ${({ theme }) => theme.colors.text};
+          transition: width 0.5s ease-in-out;
+        }
+      }
+      &:hover a {
+        ::after {
+          width: 100%;
         }
       }
     }
-  }
-  .mobile-nav-open {
-    left: 0;
   }
 `;
 
